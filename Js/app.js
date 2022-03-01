@@ -1,30 +1,37 @@
+document.getElementById('error-message').style.display = 'none';
 const searchPhone = () => {
     const searchArea = document.getElementById('search-area');
     const textArea = searchArea.value;
     console.log(textArea);
 
     searchArea.value = ''
+    document.getElementById('error-message').style.display = 'none';
     const errorDiv = document.getElementById("error-message");
-
+    //error handling
     if (textArea == false) {
         errorDiv.innerText = `Please write something`
     } else {
         errorDiv.innerText = "";
     }
 
+
+
     const url = `https://openapi.programming-hero.com/api/phones?search=${textArea}`
     fetch(url)
         .then(res => res.json())
         .then(data => displayPhones(data.data))
+        .catch(error => displayError(error));
+
 
 }
-
 
 
 const displayPhones = data => {
     console.log(data);
     const searchResult = document.getElementById('search-result');
+
     searchResult.textContent = '';
+
     data.forEach(phones => {
         console.log(phones);
         const div = document.createElement('div');
