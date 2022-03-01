@@ -4,6 +4,12 @@
     margin: 80px;
 }
 
+.card {
+    margin: auto;
+    float: none;
+    margin-bottom: 20px;
+}
+
 p.card-text {
     font-size: 14px;
     text-align: left;
