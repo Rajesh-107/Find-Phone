@@ -119,11 +119,27 @@ const displayPhoneDetails = (data) => {
     const div = document.createElement('div');
     div.classList.add('col');
     div.innerHTML = `
-<img src="${data.image}" class="card-img-top w-50" alt="...">
+    <div class="card">
+<img src="${data.image}" class="card-img-top w-25" alt="...">
         <div class="card-body">
-            <h5 class="card-title">${data.phone_name}</h5>
-            <p class="card-text">${data.brand}</p>
+            <h4 class="card-title">Phone Name: ${data.name} </h4>
+            <strong><p class="card-text">Brand: ${data.brand}</p></strong>
+            
+            <h5>Specifications</h5>
+            <p class="card-title">Sensor: ${data.mainFeatures.sensors}.</p>
+            <p class="card-text">Storage: ${data.mainFeatures.storage}</p>
+            <p class="card-text">ChipSet: ${data.mainFeatures.chipSet}</p>
+            <p class="card-text">Memory: ${data.mainFeatures.memory}</p>
+            <p class="card-text">DisplaySize: ${data.mainFeatures.displaySize}</p>
+            <strong><h6>Others</h6></strong>
+            <p class="card-text">Bluetooth: ${data.others.Bluetooth}</p>
+            <p class="card-text">WLAN: ${data.others.WLAN}</p>
+            <p class="card-text">GPS: ${data.others.GPS}</p>
+            <p class="card-text">NFC: ${data.others.NFC}</p>
+            <p class="card-text">Radio: ${data.others.Radio}</p>
+            <p class="card-text">Release Data: ${data.releaseDate}</p>
             <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
         </div>
         `;
     phoneDetail.appendChild(div);
