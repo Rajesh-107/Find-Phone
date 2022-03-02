@@ -1,11 +1,13 @@
-document.getElementById('error-message').style.display = 'none';
+document.getElementById('message-error').style.display = 'none';
 const searchPhone = () => {
     const searchArea = document.getElementById('search-area');
     const textArea = searchArea.value;
     console.log(textArea);
 
     searchArea.value = ''
-    document.getElementById('error-message').style.display = 'none';
+    document.getElementById('message-error').style.display = 'none';
+
+
     const errorDiv = document.getElementById("error-message");
     //error handling
     if (textArea == false) {
@@ -15,22 +17,21 @@ const searchPhone = () => {
     }
 
 
-
     const url = `https://openapi.programming-hero.com/api/phones?search=${textArea}`
     fetch(url)
         .then(res => res.json())
         .then(data => displayPhones(data.data))
-        .catch(error => displayError(error));
-
-
 }
+
+
 
 
 const displayPhones = data => {
     console.log(data);
     const searchResult = document.getElementById('search-result');
-
     searchResult.textContent = '';
+
+
 
     data.forEach(phones => {
         console.log(phones);
@@ -40,8 +41,8 @@ const displayPhones = data => {
         <div class="card">
                 <img src="${phones.image}" class="card-img-top w-50" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">${phones.phone_name}</h5>
-                    <p class="card-text">${phones.brand}</p>
+                    <h5 class="card-title"><strong>Name</strong>: ${phones.phone_name}</h5>
+                    <p class="card-text"><strong>Brand</strong>: ${phones.brand}</p>
                     <a onclick="loadPhonesDetail('${phones.slug}')" href="#" class="btn btn-primary d-grid gap-2 col-6 mx-auto">Details</a>
                 </div>
             </div>
@@ -59,6 +60,7 @@ const loadPhonesDetail = id => {
 }
 
 
+
 const displayPhoneDetails = (data) => {
     console.log(data);
     const phoneDetail = document.getElementById('phone-detail');
@@ -74,21 +76,21 @@ const displayPhoneDetails = (data) => {
             <strong><p class="card-text">Brand: ${data.brand}</p></strong>
             
             <h5>Specifications</h5>
-            <p class="card-title">Sensor: ${data.mainFeatures.sensors}.</p>
-            <p class="card-text">Storage: ${data.mainFeatures.storage}</p>
-            <p class="card-text">ChipSet: ${data.mainFeatures.chipSet}</p>
-            <p class="card-text">Memory: ${data.mainFeatures.memory}</p>
-            <p class="card-text">DisplaySize: ${data.mainFeatures.displaySize}</p>
+            <p class="card-title"><strong>Sensors</strong>: ${data.mainFeatures.sensors}.</p>
+            <p class="card-text"><strong>Storage</strong>: ${data.mainFeatures.storage}</p>
+            <p class="card-text"><strong>Chip-set</strong>: ${data.mainFeatures.chipSet}</p>
+            <p class="card-text"><strong>Memory</strong>: ${data.mainFeatures.memory}</p>
+            <p class="card-text"><strong>Display-size</strong>: ${data.mainFeatures.displaySize}</p>
             <strong><h6>Others</h6></strong>
-            <p class="card-text">Bluetooth: ${(data.others.Bluetooth)}</p>
-            <p class="card-text">WLAN: ${data.others.WLAN}</p>
-            <p class="card-text">GPS: ${data.others.GPS}</p>
-            <p class="card-text">NFC: ${data.others.NFC}</p>
-            <p class="card-text">Radio: ${data.others.Radio}</p>
-            <p class="card-text">Release Data: ${data.releaseDate}</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <p class="card-text"><strong>Bluetooth</strong>: ${(data.others?.Bluetooth)}</p>
+            <p class="card-text"><strong>WLAN</strong>: ${data.others?.WLAN}</p>
+            <p class="card-text"><strong>GPS</strong>: ${data.others?.GPS}</p>
+            <p class="card-text"><strong>NFC</strong>: ${data.others?.NFC}</p>
+            <p class="card-text"><strong>Radio</strong>: ${data.others?.Radio}</p>
+            <p class="card-text"><strong>Release-Date</strong>: ${data?.releaseDate}</p>
+            
         </div>
-        </div>
+        </div> 
         `;
     phoneDetail.appendChild(div);
 }

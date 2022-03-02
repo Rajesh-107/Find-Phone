@@ -16,18 +16,22 @@ p.card-text {
     color: #5a5a5a;
 }
 
-h5.card-title {
+
+/* h5.card-title {
     font-size: 17px;
-}
+} */
 
-#search-field {
+
+/* #search-field {
     border-radius: 50px 0 0 50px;
-}
+} */
 
-#search-btn {
+
+/* #search-btn {
     border-radius: 0 50px 50px 0;
-}
+} */
 
-div#result-count {
+
+/* div#result-count {
     color: #5e5e5e;
-}
+} */
