@@ -4,20 +4,20 @@
     margin: 80px;
 }
 
-.card {
-    margin: auto;
-    float: none;
-    margin-bottom: 20px;
+#phone-detail {
+    margin-left: 50px;
+    align-items: center;
 }
 
-p.card-text {
+
+/* p.card-text {
     font-size: 14px;
     text-align: left;
     color: #5a5a5a;
-}
+} */
 
 
-/* h5.card-title {
+/* * h5.card-title {
     font-size: 17px;
 } */
 
