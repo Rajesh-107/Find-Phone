@@ -1,5 +1,3 @@
-// document.getElementById('message-error').style.display = 'none';
-
 const searchPhone = () => {
     const searchArea = document.getElementById('search-area');
     const textArea = searchArea.value;
@@ -7,7 +5,7 @@ const searchPhone = () => {
 
 
     searchArea.value = ''
-        // document.getElementById('message-error').style.display = 'none';
+
 
     const errorDiv = document.getElementById("error-message");
 
@@ -22,14 +20,15 @@ const searchPhone = () => {
     const url = `https://openapi.programming-hero.com/api/phones?search=${textArea}`
     fetch(url)
         .then(res => res.json())
-        .then(data => displayPhones(data.data))
+        .then(data => displayPhones(data.data.slice(0, 20)))
 
 
-
+    // All Card Show
     const displayPhones = data => {
         console.log(data);
         const searchResult = document.getElementById('search-result');
 
+        //Error handeling
         const PhoneFromData = data;
         const resultCount = document.getElementById("result-count");
         if (PhoneFromData.length > 1) {
@@ -69,7 +68,7 @@ const loadPhonesDetail = id => {
 }
 
 
-
+// Single Details Show
 const displayPhoneDetails = (data) => {
     console.log(data);
     const phoneDetail = document.getElementById('phone-detail');
@@ -82,6 +81,7 @@ const displayPhoneDetails = (data) => {
 <img src="${data.image}" class="card-img-top w-50" alt="...">
         <div class="card-body">
             <h4 class="card-title">Phone Name: ${data.name} </h4>
+            <p class="card-text"><strong>Release-Date</strong>: ${data?.releaseDate?data.releaseDate:'No data found'}</p>
             <strong><p class="card-text">Brand: ${data.brand}</p></strong>
             <hr>
             <h5>Specifications</h5>
@@ -96,7 +96,7 @@ const displayPhoneDetails = (data) => {
             <p class="card-text"><strong>GPS</strong>: ${data.others?.GPS?data.others.GPS:'No data found'}</p>
             <p class="card-text"><strong>NFC</strong>: ${data.others?.NFC?data.others.NFC:'No data found'}</p>
             <p class="card-text"><strong>Radio</strong>: ${data.others?.Radio?data.others.Radio:'No data found'}</p>
-            <p class="card-text"><strong>Release-Date</strong>: ${data?.releaseDate?data.releaseDate:'No data found'}</p>
+           
             
         </div>
         </div> 
